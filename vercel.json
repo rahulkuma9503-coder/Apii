@@ -1,0 +1,38 @@
+{
+  "functions": {
+    "api/download.js": {
+      "maxDuration": 60
+    },
+    "api/status.js": {
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/public/index.html" },
+    { "source": "/api/download", "destination": "/api/download.js" },
+    { "source": "/api/status", "destination": "/api/status.js" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Credentials",
+          "value": "true"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,OPTIONS,POST"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+        }
+      ]
+    }
+  ]
+}
